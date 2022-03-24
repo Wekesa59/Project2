@@ -1,30 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel = "stylesheet" href = "login.css">
-</head>
-<body>
+
+<link rel="stylesheet" href="login.css">
 
 <h2>Login Form</h2>
-
-<form action="play.php" method="post">
-
+<?php
+/**
+* Script Name: PHP Form Login Remember Functionality with Cookies
+* Source: www.TutorialsClass.com
+**/
+?>
+<form action="page2.php" method="post" style="border: 2px dotted blue; text-align:center; width: 400px;">
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-        
-    <button type="submit">Login</button>
-    
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn" href = "index.html">Cancel</button>
+    <p>
+      Username: <input name="username" type="text" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" class="input-field">
+    </p>
+      <p>Password: <input name="password" type="password" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" class="input-field">
+    </p>
+      <p><input type="checkbox" name="remember" /> Remember me
+    </p>
+      <p><input type="submit" value="Login"></span></p>
   </div>
 </form>
-
-</body>
-</html>

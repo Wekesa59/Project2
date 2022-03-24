@@ -22,9 +22,26 @@
 					<?php for ($col = 0; $col < 5; $col++): ?>
 						<?php $data = $game['categories'][$col]['questions'][$row]; ?>
 						<?php $class = ($dailyDouble === $row . $col) ? 'tile dd' : 'tile' ?>
-						<td class="<?php echo $class ?>" data-points="<?php echo $points ?>"
-							data-question="<?php echo htmlentities($data['question'], ENT_QUOTES, 'UTF-8'); ?>"
-							data-answer="<?php echo htmlentities($data['answer'], ENT_QUOTES, 'UTF-8'); ?>">$<?php echo $points ?></td>
+						<td class="<?php echo $class ?>" href="#popup_<?php echo $row . "_" . $col; ?>" data-points="<?php echo $points ?>">
+							<a href="#popup_<?php echo $row . "_" . $col; ?>">$<?php echo $points ?></a>
+							<div id="popup_<?php echo $row . "_" . $col; ?>" class="overlay">
+								<div class="popup">
+									<a class="close" href="#popup_<?php echo $row . "_" . $col . "_" . $row . "_" . $col; ?>">&times;</a>
+									<div class="content">
+										<?php echo htmlentities($data['answer'], ENT_QUOTES, 'UTF-8'); ?>
+									</div>
+								</div>
+							</div>
+							<div id="popup_<?php echo $row . "_" . $col . "_" . $row . "_" . $col; ?>" class="overlay">
+								<div class="popup">
+									<a class="close" href="#">&times;</a>
+									<div class="content">
+										<?php echo htmlentities($data['question'], ENT_QUOTES, 'UTF-8'); ?>
+									</div>
+								</div>
+							</div>
+
+						</td>
 					<?php endfor ?>
 				</tr>
 			<?php endfor; ?>
@@ -52,7 +69,7 @@
 			<th><span class="player" data-player="p3" contenteditable="true">Player 3</span></th>
 		</tr>
 		<tr class="content-money">
-			<td class="p1-score" data-score="0">$0</td>
+			<td class="p1-score" data-score="0"><input type="number" step="200"/></td>
 			<td class="p2-score" data-score="0">$0</td>
 			<td class="p3-score" data-score="0">$0</td>
 		</tr>
